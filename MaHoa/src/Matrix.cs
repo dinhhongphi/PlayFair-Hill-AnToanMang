@@ -14,7 +14,7 @@ namespace MaHoa
         public Matrix(int n)
         {
             N_matrix = n;
-            matrix = new char[N_matrix,N_matrix];
+            matrix = new char[N_matrix, N_matrix];
         }
 
         public char Get(int i, int j)
