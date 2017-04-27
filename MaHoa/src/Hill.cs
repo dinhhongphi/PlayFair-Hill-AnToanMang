@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MaHoa
 {
+    //Alphabet A = 1
     public class Hill
     {
         private string Data;
@@ -19,7 +20,7 @@ namespace MaHoa
             this.Matrix = new HillKey(n_matrix);
 
             Validate();
-            Encrypt_N_Char(Data.Substring(0, 2).ToCharArray());
+            Encrypt();
         }
 
         private bool Validate()
@@ -66,6 +67,24 @@ namespace MaHoa
                 i++;
             }
             return data_return.ToArray();
+        }
+
+        public string Encrypt()
+        {
+            int i = 0;
+            string data_return = "";
+            while(i < Data.Length)
+            {
+                //encrypt one-to-one group character
+                string x = Data.Substring(i, n_matrix);
+                char[] encrypt_n_char = Encrypt_N_Char(x.ToCharArray());
+                foreach(char temp in encrypt_n_char)
+                {
+                    data_return += temp;
+                }
+                i += n_matrix;
+            }
+            return data_return;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MaHoa
 {
+    //Alphabet A = 1
     public class HillKey : Matrix
     {
         public HillKey(int n) : base(n)
