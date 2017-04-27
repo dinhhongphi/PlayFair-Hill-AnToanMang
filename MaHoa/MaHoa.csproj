@@ -54,6 +54,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Coordinate.cs" />
+    <Compile Include="src\Hill.cs" />
     <Compile Include="src\HillKey.cs" />
     <Compile Include="src\Matrix.cs" />
     <Compile Include="src\Bang_Chu_Cai.cs" />
