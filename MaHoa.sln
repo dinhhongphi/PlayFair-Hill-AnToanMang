@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaHoa", "MaHoa\MaHoa.csproj", "{766B52A1-2571-4CBF-B02D-F1854A789E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaHoaTests", "MaHoaTests\MaHoaTests.csproj", "{A1DA9364-1FBC-4052-B849-DD342C13F426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{766B52A1-2571-4CBF-B02D-F1854A789E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{766B52A1-2571-4CBF-B02D-F1854A789E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{766B52A1-2571-4CBF-B02D-F1854A789E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1DA9364-1FBC-4052-B849-DD342C13F426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DA9364-1FBC-4052-B849-DD342C13F426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DA9364-1FBC-4052-B849-DD342C13F426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DA9364-1FBC-4052-B849-DD342C13F426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
