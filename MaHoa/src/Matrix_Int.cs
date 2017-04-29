@@ -13,7 +13,7 @@ namespace MaHoa
         public int N_matrix; //size of matrix
 #else
         protected int[,] matrix;
-        protected int[,] matrix_inverse;
+        public int[,] matrix_inverse;
         protected int N_matrix; //size of matrix
 #endif
         public Matrix_Int(int n)

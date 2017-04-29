@@ -8,8 +8,13 @@ namespace MaHoa
 {
     public class Matrix
     {
+#if TEST
+        public char[,] matrix;
+        public int N_matrix; //size of matrix
+#else
         protected char[,] matrix;
         protected int N_matrix; //size of matrix
+#endif
 
         public Matrix(int n)
         {

@@ -9,18 +9,22 @@ namespace MaHoa
     //Alphabet A = 1
     public class Hill
     {
+#if TEST
+        public string Data;
+        public int n_matrix;
+        public HillKey Matrix;
+#else
         private string Data;
         private int n_matrix;
         private HillKey Matrix;
+#endif
 
         public Hill(string data, int n)
         {
             this.Data = data;
             this.n_matrix = n;
             this.Matrix = new HillKey(n_matrix);
-
             Validate();
-            Encrypt();
         }
 
         private bool Validate()
@@ -50,8 +54,11 @@ namespace MaHoa
             }
             return true;
         }
-
+#if TEST
+        public char[] Encrypt_N_Char(char[] n_char)
+#else
         private char[] Encrypt_N_Char(char[] n_char)
+#endif
         {
             int i = 0;
             List<char> data_return = new List<char>();
@@ -60,10 +67,10 @@ namespace MaHoa
                 int j = 0, temp = 0;
                 while (j < n_matrix)
                 {
-                    temp += Bang_Chu_cai.GetPosition(n_char[j]) * Bang_Chu_cai.GetPosition(Matrix.Get(i, j));
+                    temp += (Bang_Chu_cai.GetPosition(n_char[j]) - 1) * (Bang_Chu_cai.GetPosition(Matrix.Get(i, j)) - 1); //A = 0
                     j++;
                 }
-                data_return.Add(Bang_Chu_cai.GetCharacter(temp % 26 + 1)); //temp % 26 in [0,25] .Bang_Chu_cai in [1,26]
+                data_return.Add(Bang_Chu_cai.GetCharacter(temp % 26 + 1));
                 i++;
             }
             return data_return.ToArray();
