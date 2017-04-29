@@ -33,6 +33,11 @@ namespace MaHoa
             return matrix[cor.I, cor.J];
         }
 
+        public void Set(int i, int j, int value)
+        {
+            matrix[i, j] = value;
+        }
+
         /// <summary>
         /// create Inverse matrix from this
         /// </summary>
