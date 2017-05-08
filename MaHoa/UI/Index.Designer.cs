@@ -58,6 +58,7 @@
             this.playFairToolStripMenuItem.Name = "playFairToolStripMenuItem";
             this.playFairToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.playFairToolStripMenuItem.Text = "PlayFair";
+            this.playFairToolStripMenuItem.Click += new System.EventHandler(this.playFairToolStripMenuItem_Click);
             // 
             // panel1
             // 

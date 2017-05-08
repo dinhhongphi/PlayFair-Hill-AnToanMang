@@ -170,7 +170,7 @@
             // 
             this.txtB.Location = new System.Drawing.Point(70, 320);
             this.txtB.Name = "txtB";
-            this.txtB.Size = new System.Drawing.Size(309, 20);
+            this.txtB.Size = new System.Drawing.Size(291, 20);
             this.txtB.TabIndex = 1;
             // 
             // btnRandomMatrix
@@ -184,9 +184,9 @@
             // 
             // btnExecute
             // 
-            this.btnExecute.Location = new System.Drawing.Point(399, 311);
+            this.btnExecute.Location = new System.Drawing.Point(375, 311);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(119, 36);
+            this.btnExecute.Size = new System.Drawing.Size(143, 36);
             this.btnExecute.TabIndex = 4;
             this.btnExecute.Text = "Mã hóa";
             this.btnExecute.UseVisualStyleBackColor = true;

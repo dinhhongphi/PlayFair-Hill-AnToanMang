@@ -24,7 +24,19 @@ namespace MaHoa.UI
         private void hillToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (defaultTab == 1) return;
+            defaultTab = 1;
+            panel1.Controls.Clear();
             panel1.Controls.Add(new Hill());
+        }
+
+        private void playFairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (defaultTab == 1)
+            {
+                panel1.Controls.Clear();
+                defaultTab = 2;
+                panel1.Controls.Add(new PlayFair());
+            }
         }
     }
 }
