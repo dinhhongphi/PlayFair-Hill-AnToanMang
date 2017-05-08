@@ -60,6 +60,24 @@
     <Compile Include="src\Matrix.cs" />
     <Compile Include="src\Bang_Chu_Cai.cs" />
     <Compile Include="src\Matrix_Int.cs" />
+    <Compile Include="UI\Hill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Hill.Designer.cs">
+      <DependentUpon>Hill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayFair.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PlayFair.Designer.cs">
+      <DependentUpon>PlayFair.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -69,6 +87,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Hill.resx">
+      <DependentUpon>Hill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayFair.resx">
+      <DependentUpon>PlayFair.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="src\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
