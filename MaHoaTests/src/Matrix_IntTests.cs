@@ -75,6 +75,22 @@ namespace MaHoa.Tests
         }
 
         [TestMethod()]
+        public void Validate_Multiplicative_Inverse_2()
+        {
+            var matrix_2 = new Matrix_Int(2)
+            {
+                matrix = new int[2, 2]
+                {
+                    {13,21 },
+                    {16,3 }
+                }
+            };
+           
+            var value = matrix_2.Multiplicative_Inverse();
+            Assert.AreEqual(7, value);
+        }
+
+        [TestMethod()]
         public void Validate_Deteminate_Matrix_1_size()
         {
             //Test Caculator det(matrix) if n_matrix = 1
@@ -110,6 +126,25 @@ namespace MaHoa.Tests
             };
             CollectionAssert.AreEqual(new_matrix, x.matrix);
         }
+        [TestMethod()]
+        public void Validate_Adj_Matrix_2()
+        {
+            var matrix_2 = new Matrix_Int(2)
+            {
+                matrix = new int[2, 2]
+                {
+                    {13,21 },
+                    {16,3 }
+                }
+            };
+            var x = matrix_2.Adjugate();
+            var new_matrix = new int[2, 2]
+            {
+                {3,5 },
+                {10,13 }
+            };
+            CollectionAssert.AreEqual(new_matrix, x.matrix);
+        }
 
         [TestMethod()]
         public void Validate_Matrix_Inverse()
@@ -122,6 +157,26 @@ namespace MaHoa.Tests
                 { 13, 8, 17}
             };
             CollectionAssert.AreEqual(new_matrix, matrix.matrix_inverse);
+        }
+
+        [TestMethod()]
+        public void Validate_Matrix_Inverse_2()
+        {
+            Matrix_Int matrix_2 = new Matrix_Int(2)
+            {
+                matrix = new int[2, 2]
+                {
+                    { 13,21},
+                    { 16,3}
+                }
+            };
+            var new_matrix = new int[2, 2]
+            {
+                { 21,9},
+                {18,13}
+            };
+            matrix_2.InverseMatrix();
+            CollectionAssert.AreEqual(new_matrix, matrix_2.matrix_inverse);
         }
     }
 }
