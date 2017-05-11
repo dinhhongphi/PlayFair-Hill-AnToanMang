@@ -13,7 +13,7 @@ namespace MaHoa
         public int N_matrix; //size of matrix
 #else
         protected char[,] matrix;
-        protected int N_matrix; //size of matrix
+        public int N_matrix; //size of matrix
 #endif
 
         public Matrix(int n)
@@ -30,6 +30,11 @@ namespace MaHoa
         public char Get(Coordinate cor)
         {
             return matrix[cor.I, cor.J];
+        }
+
+        public void Set(int i, int j, char value)
+        {
+            matrix[i, j] = value;
         }
     }
 }
