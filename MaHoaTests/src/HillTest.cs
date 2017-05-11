@@ -10,7 +10,7 @@ namespace MaHoaTests.src
         [TestMethod]
         public void Encrypt_Test()
         {
-            Hill a = new Hill("THANH PHO", 3)
+            Hill a = new Hill(3)
             {
                 Matrix = new HillKey(3)
                 {
@@ -31,6 +31,7 @@ namespace MaHoaTests.src
                     }
                 }
             };
+            a.SetData("THANH PHO");
             var result = a.Encrypt();
             Assert.AreEqual("KELFJEIRN", result);
         }
@@ -38,7 +39,7 @@ namespace MaHoaTests.src
         [TestMethod()]
         public void Encrypt_N_Char_Test_3()
         {
-            Hill a = new Hill("THA", 3)
+            Hill a = new Hill(3)
             {
                 Matrix = new HillKey(3)
                 {
@@ -50,7 +51,7 @@ namespace MaHoaTests.src
                     }
                 }
             };
-
+            a.SetData("THA");
             var result = a.Encrypt_N_Char(new char[] { 'T', 'H', 'A' });
             CollectionAssert.AreEqual(new char[] { 'K', 'E', 'L' }, result);
         }
@@ -58,7 +59,7 @@ namespace MaHoaTests.src
         [TestMethod()]
         public void Encrypt_N_Char_Test_2()
         {
-            Hill a = new Hill("TH", 2)
+            Hill a = new Hill(2)
             {
                 Matrix = new HillKey(2)
                 {
@@ -69,7 +70,7 @@ namespace MaHoaTests.src
                     }
                 }
             };
-
+            a.SetData("Th");
             var result = a.Encrypt_N_Char(new char[] { 'T', 'H' });
             CollectionAssert.AreEqual(new char[] { 'Q', 'N' }, result);
         }

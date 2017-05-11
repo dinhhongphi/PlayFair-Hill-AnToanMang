@@ -17,11 +17,9 @@ namespace MaHoa
         public HillKey Matrix;
 #endif
 
-        public Hill(string data, int n)
+        public Hill(int n)
         {
-            this.Data = data;
             this.Matrix = new HillKey(n);
-            Validate();
         }
 
         private bool Validate()
@@ -90,5 +88,16 @@ namespace MaHoa
             }
             return data_return;
         }
+
+        public void SetData(string value)
+        {
+            Data = value;
+            if (!Validate())
+            {
+                Data = "";
+                throw new Exception("Error when validate Plain Text");
+            }
+        }
+
     }
 }
