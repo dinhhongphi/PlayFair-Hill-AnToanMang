@@ -11,19 +11,16 @@ namespace MaHoa
     {
 #if TEST
         public string Data;
-        public int n_matrix;
         public HillKey Matrix;
 #else
-        private string Data;
-        private int n_matrix;
-        private HillKey Matrix;
+        public string Data;
+        public HillKey Matrix;
 #endif
 
         public Hill(string data, int n)
         {
             this.Data = data;
-            this.n_matrix = n;
-            this.Matrix = new HillKey(n_matrix);
+            this.Matrix = new HillKey(n);
             Validate();
         }
 
@@ -44,10 +41,10 @@ namespace MaHoa
             }
 
             //add 'X' character 
-            i = Data.Length % n_matrix;
+            i = Data.Length % Matrix.N_matrix;
             if (i != 0) //don't enough character
             {
-                for (int j = 1; j <= n_matrix - i; i++)
+                for (int j = 1; j <= Matrix.N_matrix - i; i++)
                 {
                     Data = Data.Insert(Data.Length, "X");
                 }
@@ -62,10 +59,10 @@ namespace MaHoa
         {
             int i = 0;
             List<char> data_return = new List<char>();
-            while (i < n_matrix)
+            while (i < Matrix.N_matrix)
             {
                 int j = 0, temp = 0;
-                while (j < n_matrix)
+                while (j < Matrix.N_matrix)
                 {
                     temp += (Bang_Chu_cai.GetPosition(n_char[j]) - 1) * (Bang_Chu_cai.GetPosition(Matrix.Get(i, j)) - 1); //A = 0
                     j++;
@@ -83,13 +80,13 @@ namespace MaHoa
             while(i < Data.Length)
             {
                 //encrypt one-to-one group character
-                string x = Data.Substring(i, n_matrix);
+                string x = Data.Substring(i, Matrix.N_matrix);
                 char[] encrypt_n_char = Encrypt_N_Char(x.ToCharArray());
                 foreach(char temp in encrypt_n_char)
                 {
                     data_return += temp;
                 }
-                i += n_matrix;
+                i += Matrix.N_matrix;
             }
             return data_return;
         }
