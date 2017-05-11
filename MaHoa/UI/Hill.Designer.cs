@@ -181,6 +181,7 @@
             this.btnRandomMatrix.TabIndex = 4;
             this.btnRandomMatrix.Text = "Random Matrix";
             this.btnRandomMatrix.UseVisualStyleBackColor = true;
+            this.btnRandomMatrix.Click += new System.EventHandler(this.btnRandomMatrix_Click);
             // 
             // btnExecute
             // 
@@ -190,6 +191,7 @@
             this.btnExecute.TabIndex = 4;
             this.btnExecute.Text = "Mã hóa";
             this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
             // 
             // groupBox3
             // 
