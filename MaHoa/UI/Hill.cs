@@ -72,7 +72,7 @@ namespace MaHoa.UI
             //remove old item in matrix
             this.groupBox1.Controls.Clear();
             //init matrix
-            hillCypher = new MaHoa.Hill(txtA.Text, Matrix_size);
+            hillCypher = new MaHoa.Hill(Matrix_size);
             //show matrix
             var X_begin = 7;
             var Y_begin = 19;
@@ -98,7 +98,7 @@ namespace MaHoa.UI
         {
             if (this.rdbMaHoa.Checked)
             {
-                hillCypher.Data = txtA.Text;
+                hillCypher.SetData(txtA.Text);
                 var result = hillCypher.Encrypt();
                 txtB.Text = result;
             }
