@@ -178,21 +178,23 @@ namespace MaHoa
                 };
             }
             Matrix_Int return_matrix = new Matrix_Int(N_matrix);
-            int flag = 1;
+            int flag_i = 1;
             for (int i = 0; i < N_matrix; i++)
             {
+                int flag_j = 1;
                 for (int j = 0; j < N_matrix; j++)
                 {
                     Matrix_Int copy_matrix = this.CopyMatrixExclude(i, j);
-                    var x = flag * copy_matrix.Determinant();
+                    var x = flag_i * flag_j * copy_matrix.Determinant();
                     if (x < 0) 
                     {
                         x = (x + (((Math.Abs(x) / 26) + 1) * 26));
                     }
                     //x in [0,26]
                     return_matrix.matrix[j, i] = x % 26;
-                    flag *= -1;
+                    flag_j *= -1;
                 }
+                flag_i *= -1;
             }
             return return_matrix;
         }

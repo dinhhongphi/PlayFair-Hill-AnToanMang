@@ -14,7 +14,7 @@ namespace MaHoa.UI
     {
         private int Matrix_size;
         private MaHoa.Hill hillCypher;
-
+        private MaHoa.Matrix_Int inverseMatrix;
         public Hill()
         {
             InitializeComponent();
@@ -48,12 +48,20 @@ namespace MaHoa.UI
                     Matrix_size = 5;
                     break;
             }
+            if (rdbGiaiMa.Checked)
+            {
+                //init inverse matrix
+                inverseMatrix = new Matrix_Int(Matrix_size);
+                DrawMatrix(null, true);
+            }
         }
-
+        /// <summary>
+        /// Change method decrypt and encrypt
+        /// </summary>
         private void radioButtonMethod_CheckedChanged(object sender, EventArgs e)
         {
             var control = ((RadioButton)sender).Name;
-            if(control == "rdbGiaiMa")
+            if (control == "rdbGiaiMa")
             {
                 lblA.Text = "Cypher Text";
                 lblB.Text = "Plain Text";
@@ -67,12 +75,10 @@ namespace MaHoa.UI
             }
         }
 
-        private void btnRandomMatrix_Click(object sender, EventArgs e)
+        private void DrawMatrix(MaHoa.Hill matrix, bool allowModifier)
         {
             //remove old item in matrix
             this.groupBox1.Controls.Clear();
-            //init matrix
-            hillCypher = new MaHoa.Hill(Matrix_size);
             //show matrix
             var X_begin = 7;
             var Y_begin = 19;
@@ -84,8 +90,12 @@ namespace MaHoa.UI
                     txt.Location = new System.Drawing.Point(X_begin, Y_begin);
                     txt.Name = "txt" + i.ToString() + j.ToString();
                     txt.Size = new System.Drawing.Size(44, 20);
-                    txt.Enabled = false;
-                    txt.Text = hillCypher.Matrix.Get(i - 1, j - 1).ToString();
+                    txt.Enabled = allowModifier;
+                    if (matrix != null)
+                    {
+                        txt.Text = hillCypher.Matrix.Get(i - 1, j - 1).ToString();
+                    }
+                    txt.TextChanged += Txt_TextChanged;
                     this.groupBox1.Controls.Add(txt);
                     X_begin += 52;
                 }
@@ -94,12 +104,47 @@ namespace MaHoa.UI
             }
         }
 
+        private void Txt_TextChanged(object sender, EventArgs e)
+        {
+            var control = ((TextBox)sender);
+            var name = control.Name;
+            int i = Int32.Parse(name.Substring(3, 1)) - 1;
+            int j = Int32.Parse(name.Substring(4, 1)) -1;
+            int value = Bang_Chu_cai.GetPosition(control.Text[0]) - 1;
+            inverseMatrix.Set(i, j, value);
+        }
+
+
+        private void btnRandomMatrix_Click(object sender, EventArgs e)
+        {
+            //init matrix
+            hillCypher = new MaHoa.Hill(Matrix_size);
+            DrawMatrix(hillCypher,false);
+        }
+
         private void btnExecute_Click(object sender, EventArgs e)
         {
             if (this.rdbMaHoa.Checked)
             {
                 hillCypher.SetData(txtA.Text);
                 var result = hillCypher.Encrypt();
+                txtB.Text = result;
+            }
+            else
+            {
+                hillCypher = new MaHoa.Hill(Matrix_size);
+                inverseMatrix.InverseMatrix();
+                for(int i = 0; i < Matrix_size; i++)
+                {
+                    for (int j = 0; j < Matrix_size; j++)
+                    {
+                        char value = Bang_Chu_cai.GetCharacter(inverseMatrix.matrix_inverse[i, j] + 1);
+                        hillCypher.Matrix.Set(i, j, value);
+                    }
+                }
+                hillCypher.SetData(txtA.Text);
+                //decrypt
+                string result = hillCypher.Encrypt();
                 txtB.Text = result;
             }
         }
