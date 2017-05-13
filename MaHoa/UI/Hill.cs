@@ -48,12 +48,9 @@ namespace MaHoa.UI
                     Matrix_size = 5;
                     break;
             }
-            if (rdbGiaiMa.Checked)
-            {
-                //init inverse matrix
-                inverseMatrix = new Matrix_Int(Matrix_size);
-                DrawMatrix(null, true);
-            }
+            //init inverse matrix
+            inverseMatrix = new Matrix_Int(Matrix_size);
+            DrawMatrix(null, true);
         }
         /// <summary>
         /// Change method decrypt and encrypt
@@ -66,12 +63,16 @@ namespace MaHoa.UI
                 lblA.Text = "Cypher Text";
                 lblB.Text = "Plain Text";
                 btnExecute.Text = "Giải Mã";
+                btnRandomMatrix.Enabled = false;
+                radioButton_CheckedChanged(sender, e);
             }
             else
             {
                 lblB.Text = "Cypher Text";
                 lblA.Text = "Plain Text";
                 btnExecute.Text = "Mã Hóa";
+                btnRandomMatrix.Enabled = true;
+                radioButton_CheckedChanged(sender, e);
             }
         }
 
@@ -109,8 +110,8 @@ namespace MaHoa.UI
             var control = ((TextBox)sender);
             var name = control.Name;
             int i = Int32.Parse(name.Substring(3, 1)) - 1;
-            int j = Int32.Parse(name.Substring(4, 1)) -1;
-            int value = Bang_Chu_cai.GetPosition(control.Text[0]) - 1;
+            int j = Int32.Parse(name.Substring(4, 1)) - 1;
+            int value = Bang_Chu_cai.GetPosition((control.Text.ToUpper()[0])) - 1;
             inverseMatrix.Set(i, j, value);
         }
 
@@ -119,7 +120,7 @@ namespace MaHoa.UI
         {
             //init matrix
             hillCypher = new MaHoa.Hill(Matrix_size);
-            DrawMatrix(hillCypher,false);
+            DrawMatrix(hillCypher, true);
         }
 
         private void btnExecute_Click(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace MaHoa.UI
             {
                 hillCypher = new MaHoa.Hill(Matrix_size);
                 inverseMatrix.InverseMatrix();
-                for(int i = 0; i < Matrix_size; i++)
+                for (int i = 0; i < Matrix_size; i++)
                 {
                     for (int j = 0; j < Matrix_size; j++)
                     {

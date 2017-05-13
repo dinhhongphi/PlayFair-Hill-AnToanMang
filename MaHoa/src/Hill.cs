@@ -24,6 +24,8 @@ namespace MaHoa
 
         private bool Validate()
         {
+            //convert lower to upper character
+            Data = Data.ToUpper();
             //delete whitespace in data
             int i = 0;
             while (i < Data.Length)
