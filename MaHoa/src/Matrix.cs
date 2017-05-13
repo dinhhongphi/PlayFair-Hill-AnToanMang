@@ -34,7 +34,7 @@ namespace MaHoa
 
         public void Set(int i, int j, char value)
         {
-            matrix[i, j] = value;
+            matrix[i, j] = value.ToString().ToUpper()[0];
         }
     }
 }

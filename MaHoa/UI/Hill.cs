@@ -110,7 +110,7 @@ namespace MaHoa.UI
             var name = control.Name;
             int i = Int32.Parse(name.Substring(3, 1)) - 1;
             int j = Int32.Parse(name.Substring(4, 1)) -1;
-            int value = Bang_Chu_cai.GetPosition(control.Text[0]) - 1;
+            int value = Bang_Chu_cai.GetPosition((control.Text.ToUpper()[0])) - 1;
             inverseMatrix.Set(i, j, value);
         }
 
