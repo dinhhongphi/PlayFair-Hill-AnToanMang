@@ -14,7 +14,6 @@ namespace MaHoa.UI
     {
         private int Matrix_size;
         private MaHoa.Hill hillCypher;
-        private MaHoa.Matrix_Int inverseMatrix;
         public Hill()
         {
             InitializeComponent();
@@ -48,8 +47,8 @@ namespace MaHoa.UI
                     Matrix_size = 5;
                     break;
             }
-            //init inverse matrix
-            inverseMatrix = new Matrix_Int(Matrix_size);
+            //init matrix
+            hillCypher = new MaHoa.Hill(Matrix_size);
             DrawMatrix(null, true);
         }
         /// <summary>
@@ -111,15 +110,22 @@ namespace MaHoa.UI
             var name = control.Name;
             int i = Int32.Parse(name.Substring(3, 1)) - 1;
             int j = Int32.Parse(name.Substring(4, 1)) - 1;
-            int value = Bang_Chu_cai.GetPosition((control.Text.ToUpper()[0])) - 1;
-            inverseMatrix.Set(i, j, value);
+            char c = control.Text == "" ? ' ' : control.Text.ToUpper()[0];
+            if (rdbMaHoa.Checked)
+            {
+                hillCypher.Matrix.SetValueChar(i, j, c);
+            }
+            else
+            {
+                int value = Bang_Chu_cai.GetPosition(c) - 1;
+                hillCypher.Matrix.SetValueInt(i, j, value);
+            }
         }
 
 
         private void btnRandomMatrix_Click(object sender, EventArgs e)
         {
-            //init matrix
-            hillCypher = new MaHoa.Hill(Matrix_size);
+            hillCypher.Matrix.RandomMatrix();
             DrawMatrix(hillCypher, true);
         }
 
@@ -133,19 +139,10 @@ namespace MaHoa.UI
             }
             else
             {
-                hillCypher = new MaHoa.Hill(Matrix_size);
-                inverseMatrix.InverseMatrix();
-                for (int i = 0; i < Matrix_size; i++)
-                {
-                    for (int j = 0; j < Matrix_size; j++)
-                    {
-                        char value = Bang_Chu_cai.GetCharacter(inverseMatrix.matrix_inverse[i, j] + 1);
-                        hillCypher.Matrix.Set(i, j, value);
-                    }
-                }
+                hillCypher.Matrix.matrix_int.InverseMatrix();
                 hillCypher.SetData(txtA.Text);
                 //decrypt
-                string result = hillCypher.Encrypt();
+                string result = hillCypher.Encrypt(1);
                 txtB.Text = result;
             }
         }

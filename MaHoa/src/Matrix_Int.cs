@@ -59,7 +59,7 @@ namespace MaHoa
             }
         }
         /// <summary>
-        /// caculator determinant of this
+        /// caculator determinant of matrix
         /// </summary>
         /// <returns></returns>
         public int Determinant()
@@ -130,9 +130,8 @@ namespace MaHoa
         }
 
         /// <summary>
-        /// Caculator det(A)^(-1)
-        /// d^(-1) = x
-        /// d.x = 1 module 26
+        /// Caculator (d)^(-1).
+        /// d*(d)^(-1) = 1 module 26
         /// </summary>
         /// <returns>x</returns>
         public int Multiplicative_Inverse()
@@ -197,6 +196,11 @@ namespace MaHoa
                 flag_i *= -1;
             }
             return return_matrix;
+        }
+
+        public int GetInverse(int i, int j)
+        {
+            return matrix_inverse[i, j];
         }
     }
 }
