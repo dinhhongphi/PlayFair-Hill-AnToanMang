@@ -52,7 +52,7 @@ namespace MaHoa
             return true;
         }
 #if TEST
-        public char[] Encrypt_N_Char(char[] n_char)
+        public char[] Encrypt_N_Char(char[] n_char, int followInverseMatrix = 0)
 #else
         private char[] Encrypt_N_Char(char[] n_char)
 #endif
@@ -64,7 +64,12 @@ namespace MaHoa
                 int j = 0, temp = 0;
                 while (j < Matrix.N_matrix)
                 {
-                    temp += (Bang_Chu_cai.GetPosition(n_char[j]) - 1) * (Bang_Chu_cai.GetPosition(Matrix.Get(i, j)) - 1); //A = 0
+                    if(followInverseMatrix == 0)
+                        temp += (Bang_Chu_cai.GetPosition(n_char[j]) - 1) * Matrix.matrix_int.Get(i,j); //A = 0
+                    else
+                    {
+                        temp += (Bang_Chu_cai.GetPosition(n_char[j]) - 1) * Matrix.matrix_int.GetInverse(i, j); //A = 0
+                    }
                     j++;
                 }
                 data_return.Add(Bang_Chu_cai.GetCharacter(temp % 26 + 1));
@@ -72,8 +77,11 @@ namespace MaHoa
             }
             return data_return.ToArray();
         }
-
-        public string Encrypt()
+        /// <summary>
+        /// Encrypt plain text
+        /// </summary>
+        /// <returns>cypher text</returns>
+        public string Encrypt(int followInverseMatrix = 0)
         {
             int i = 0;
             string data_return = "";
@@ -81,7 +89,7 @@ namespace MaHoa
             {
                 //encrypt one-to-one group character
                 string x = Data.Substring(i, Matrix.N_matrix);
-                char[] encrypt_n_char = Encrypt_N_Char(x.ToCharArray());
+                char[] encrypt_n_char = Encrypt_N_Char(x.ToCharArray(),followInverseMatrix);
                 foreach(char temp in encrypt_n_char)
                 {
                     data_return += temp;
