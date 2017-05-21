@@ -12,6 +12,7 @@ namespace MaHoa
         {
 
         }
+
         /// <summary>
         /// Init matrix key
         /// </summary>
@@ -19,8 +20,18 @@ namespace MaHoa
         public void CreateMatrix(string key)
         {
             string temp = String.Copy(key);
+            var alpha = Bang_Chu_cai.Tolist();
+            var an = alpha + "0123456789";
+            //remove space
+            temp = temp.Replace(" ", "");
             temp = temp.ToUpper();
-            temp += Bang_Chu_cai.Tolist();
+            //key don't have contain special character
+            foreach(char c in temp)
+            {
+                if (!an.Contains<char>(c))
+                    throw new ArgumentException("key don't have special character");
+            }
+            temp += alpha;
             if(N_matrix == 5)
             {
                 temp = temp.Replace('J', 'I');
