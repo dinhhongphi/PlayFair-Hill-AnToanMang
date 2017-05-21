@@ -111,7 +111,15 @@ namespace MaHoa.UI
             }
             else //giai ma
             {
-
+                try
+                {
+                    string result = playfair.Decrypt(txtInput.Text);
+                    txtResult.Text = result;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while encrypt data", "Error", MessageBoxButtons.OK);
+                }
             }
         }
     }
