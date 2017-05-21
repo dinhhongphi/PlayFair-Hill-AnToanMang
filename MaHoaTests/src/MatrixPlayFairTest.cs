@@ -91,5 +91,30 @@ namespace MaHoaTests.src
             var result = matrix.GetCoordinate(' ');
             Assert.IsNull(result);
         }
+
+        [TestMethod]
+        public void InitMatrix_Test_key_have_space()
+        {
+            MatrixPlayFair matrix = new MatrixPlayFair(5);
+            matrix.CreateMatrix("dai hoc cong nghe thong tin");
+
+            char[,] expect = new char[5, 5]
+           {
+                {'D','A','I','H','O' },
+                { 'C','N','G','E','T'},
+                {'B','F','K','L','M' },
+                {'P','Q','R','S','U' },
+                {'V','W','X','Y','Z'}
+           };
+            CollectionAssert.AreEqual(expect, matrix.matrix);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void InitMatrix_Test_key_have_special_character()
+        {
+            MatrixPlayFair matrix = new MatrixPlayFair(5);
+            matrix.CreateMatrix("@#$@!");
+        }
     }
 }
