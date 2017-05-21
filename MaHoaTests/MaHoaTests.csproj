@@ -60,6 +60,7 @@
     <Compile Include="src\MatrixPlayFairTest.cs" />
     <Compile Include="src\Matrix_IntTests.cs" />
     <Compile Include="src\HillTest.cs" />
+    <Compile Include="src\PlayFair_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

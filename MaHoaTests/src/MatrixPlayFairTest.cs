@@ -11,10 +11,10 @@ namespace MaHoaTests.src
     public class MatrixPlayFairTest
     {
         [TestMethod]
-        public void InitMatrix_Test()
+        public void InitMatrixWithLowerString_Test()
         {
             MatrixPlayFair matrix = new MatrixPlayFair(5);
-            matrix.CreateMatrix("PHI");
+            matrix.CreateMatrix("pHi");
 
             char[,] expect = new char[5, 5]
             {
