@@ -30,18 +30,20 @@
         {
             this.rdbMaHoa = new System.Windows.Forms.RadioButton();
             this.btnExecute = new System.Windows.Forms.Button();
-            this.btnRandomMatrix = new System.Windows.Forms.Button();
+            this.btnInitMatrix = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rdbGiaiMa = new System.Windows.Forms.RadioButton();
-            this.txtB = new System.Windows.Forms.TextBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.lblB = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtA = new System.Windows.Forms.TextBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.lblA = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtKey = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,15 +68,17 @@
             this.btnExecute.TabIndex = 13;
             this.btnExecute.Text = "Mã Hóa";
             this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
             // 
-            // btnRandomMatrix
+            // btnInitMatrix
             // 
-            this.btnRandomMatrix.Location = new System.Drawing.Point(346, 239);
-            this.btnRandomMatrix.Name = "btnRandomMatrix";
-            this.btnRandomMatrix.Size = new System.Drawing.Size(153, 51);
-            this.btnRandomMatrix.TabIndex = 14;
-            this.btnRandomMatrix.Text = "Random Matrix";
-            this.btnRandomMatrix.UseVisualStyleBackColor = true;
+            this.btnInitMatrix.Location = new System.Drawing.Point(346, 239);
+            this.btnInitMatrix.Name = "btnInitMatrix";
+            this.btnInitMatrix.Size = new System.Drawing.Size(153, 51);
+            this.btnInitMatrix.TabIndex = 14;
+            this.btnInitMatrix.Text = "Init Matrix";
+            this.btnInitMatrix.UseVisualStyleBackColor = true;
+            this.btnInitMatrix.Click += new System.EventHandler(this.btnInitMatrix_Click);
             // 
             // groupBox3
             // 
@@ -99,12 +103,12 @@
             this.rdbGiaiMa.UseVisualStyleBackColor = true;
             this.rdbGiaiMa.CheckedChanged += new System.EventHandler(this.radioButtonMethod_CheckedChanged);
             // 
-            // txtB
+            // txtResult
             // 
-            this.txtB.Location = new System.Drawing.Point(70, 344);
-            this.txtB.Name = "txtB";
-            this.txtB.Size = new System.Drawing.Size(254, 20);
-            this.txtB.TabIndex = 8;
+            this.txtResult.Location = new System.Drawing.Point(70, 344);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(254, 20);
+            this.txtResult.TabIndex = 8;
             // 
             // radioButton5
             // 
@@ -159,12 +163,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Key Matrix";
             // 
-            // txtA
+            // txtInput
             // 
-            this.txtA.Location = new System.Drawing.Point(70, 54);
-            this.txtA.Name = "txtA";
-            this.txtA.Size = new System.Drawing.Size(254, 20);
-            this.txtA.TabIndex = 9;
+            this.txtInput.Location = new System.Drawing.Point(70, 54);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(254, 20);
+            this.txtInput.TabIndex = 9;
             // 
             // lblA
             // 
@@ -184,18 +188,36 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Thuật toán PlayFair";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Key";
+            // 
+            // txtKey
+            // 
+            this.txtKey.Location = new System.Drawing.Point(70, 87);
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(254, 20);
+            this.txtKey.TabIndex = 9;
+            // 
             // PlayFair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnExecute);
-            this.Controls.Add(this.btnRandomMatrix);
+            this.Controls.Add(this.btnInitMatrix);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.txtB);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.lblB);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtA);
+            this.Controls.Add(this.txtKey);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.lblA);
             this.Controls.Add(this.label1);
             this.Name = "PlayFair";
@@ -213,17 +235,19 @@
 
         private System.Windows.Forms.RadioButton rdbMaHoa;
         private System.Windows.Forms.Button btnExecute;
-        private System.Windows.Forms.Button btnRandomMatrix;
+        private System.Windows.Forms.Button btnInitMatrix;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdbGiaiMa;
-        private System.Windows.Forms.TextBox txtB;
+        private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label lblB;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtA;
+        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Label lblA;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtKey;
     }
 }

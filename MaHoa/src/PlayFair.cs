@@ -14,9 +14,10 @@ namespace MaHoa
             matrix = new MatrixPlayFair(n);
         }
 
-        public void InitMatrix(string key)
+        public MatrixPlayFair InitMatrix(string key)
         {
             matrix.CreateMatrix(key);
+            return matrix;
         }
 
         /// <summary>

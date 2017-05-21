@@ -12,6 +12,7 @@ namespace MaHoa.UI
 {
     public partial class PlayFair : UserControl
     {
+        private MaHoa.PlayFair playfair;
         public PlayFair()
         {
             InitializeComponent();
@@ -34,17 +35,30 @@ namespace MaHoa.UI
                     value = 5;
                     break;
             }
+            playfair = new MaHoa.PlayFair(value);
+        }
+
+
+        private void DrawMatrix(MaHoa.Matrix matrix, bool allowModifier)
+        {
+            //remove old item in matrix
+            this.groupBox1.Controls.Clear();
+            //show matrix
             var X_begin = 7;
             var Y_begin = 19;
-            for (int i = 1; i <= value; i++)
+            for (int i = 1; i <= matrix.N_matrix; i++)
             {
-                for (int j = 1; j <= value; j++)
+                for (int j = 1; j <= matrix.N_matrix; j++)
                 {
                     TextBox txt = new TextBox();
                     txt.Location = new System.Drawing.Point(X_begin, Y_begin);
-                    txt.Name = "txt7";
+                    txt.Name = "txt" + i.ToString() + j.ToString();
                     txt.Size = new System.Drawing.Size(44, 20);
-                    txt.Enabled = false;
+                    txt.Enabled = allowModifier;
+                    if (matrix != null)
+                    {
+                        txt.Text = matrix.Get(i - 1, j - 1).ToString();
+                    }
                     this.groupBox1.Controls.Add(txt);
                     X_begin += 52;
                 }
@@ -67,6 +81,37 @@ namespace MaHoa.UI
                 lblB.Text = "Cypher Text";
                 lblA.Text = "Plain Text";
                 btnExecute.Text = "Mã Hóa";
+            }
+        }
+
+        private void btnInitMatrix_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var matrix = playfair.InitMatrix(txtKey.Text);
+                DrawMatrix(matrix, false);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error while init matrix with key", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnExecute_Click(object sender, EventArgs e)
+        {
+            if (rdbMaHoa.Checked)
+            {
+                try
+                {
+                    string result = playfair.Encrypt(txtInput.Text);
+                    txtResult.Text = result;
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Error while encrypt data", "Error", MessageBoxButtons.OK);
+                }
+            }
+            else //giai ma
+            {
+
             }
         }
     }
