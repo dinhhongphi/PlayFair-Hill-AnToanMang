@@ -92,8 +92,42 @@ namespace MaHoa
                 throw new ArgumentException();
             //get coordinate of one and two
             Coordinate c_one, c_two;
-            
-            return "";
+            c_one = matrix.GetCoordinate(one);
+            c_two = matrix.GetCoordinate(two);
+            if (c_one == null || c_two == null)
+                throw new ArgumentException();
+
+            //encrypt two character
+            string result = HoanDoi(c_one, c_two);
+            return result;
+        }
+
+        /// <summary>
+        /// Encrypt plain text 
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns>Cyper text</returns>
+        public string Encrypt(string plainText)
+        {
+            if (plainText.Length == 0)
+                throw new ArgumentException("plaintext is empty");
+            //remove space 
+            plainText = RemoveSpaceInString(plainText);
+
+            if(plainText.Length % 2 != 0)
+            {
+                plainText += "X";
+            }
+            //split pair two character to encrypt
+            int i = 0;
+            string result = "";
+            while(i < plainText.Length)
+            {
+                var temp = EncryptTwoCharacter(plainText[i], plainText[i + 1]);
+                result += temp ?? throw new ArgumentException("plain text invalid");
+                i += 2;
+            }
+            return result;
         }
     }
 }

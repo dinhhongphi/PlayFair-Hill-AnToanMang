@@ -88,5 +88,32 @@ namespace MaHoaTests.src
             playfair.InitMatrix("phi");
             var result = playfair.EncryptTwoCharacter('A',' ');
         }
+
+        [TestMethod]
+        public void Encrypt_Test_plain_text_is_odd_character()
+        {
+            MaHoa.PlayFair playfair = new PlayFair(5);
+            playfair.InitMatrix("dai hoc cong nghe thong tin");
+            string result = playfair.Encrypt("xin chao cac ban");
+            Assert.AreEqual("IGGNOIDTDNFDGW",result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Encrypt_Test_argument_invalid()
+        {
+            MaHoa.PlayFair playfair = new PlayFair(5);
+            playfair.InitMatrix("dai hoc cong nghe thong tin");
+            string result = playfair.Encrypt("!@#$AVSDD");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "plaintext is empty")]
+        public void Encrypt_Test_argument_is_empty()
+        {
+            MaHoa.PlayFair playfair = new PlayFair(5);
+            playfair.InitMatrix("dai hoc cong nghe thong tin");
+            string result = playfair.Encrypt("");
+        }
     }
 }
