@@ -72,5 +72,31 @@ namespace MaHoa
             }
             return key;
         }
+
+        /// <summary>
+        /// Find Coordinate of a character in matrix
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public Coordinate GetCoordinate(char key)
+        {
+            key = key.ToString().ToUpper()[0];
+            for(int i = 0; i < N_matrix; i++)
+            {
+                for(int j = 0; j < N_matrix; j++)
+                {
+                    if(matrix[i,j] == key)
+                    {
+                        Coordinate temp = new Coordinate()
+                        {
+                            I = i,
+                            J = j
+                        };
+                        return temp;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

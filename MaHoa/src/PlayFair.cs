@@ -9,7 +9,8 @@ namespace MaHoa
     public class PlayFair
     {
         private MatrixPlayFair matrix;
-        public PlayFair(int n) {
+        public PlayFair(int n)
+        {
             matrix = new MatrixPlayFair(n);
         }
 
@@ -64,13 +65,14 @@ namespace MaHoa
                 && cuoi.J < matrix.N_matrix && cuoi.J >= 0))
                 throw new IndexOutOfRangeException();
             var result = "";
-            if(dau.I == cuoi.I) //same row
+            if (dau.I == cuoi.I) //same row
             {
                 result += matrix.Get(dau.I, (dau.J + 1) % matrix.N_matrix);
                 result += matrix.Get(cuoi.I, (cuoi.J + 1) % matrix.N_matrix);
-            }else if(dau.J == cuoi.J) //same column
+            }
+            else if (dau.J == cuoi.J) //same column
             {
-                result += matrix.Get((dau.I + 1) % matrix.N_matrix,dau.J);
+                result += matrix.Get((dau.I + 1) % matrix.N_matrix, dau.J);
                 result += matrix.Get((cuoi.I + 1) % matrix.N_matrix, cuoi.J);
             }
             else
